@@ -1,0 +1,18 @@
+.color-primary { color:$color-primary !important; }
+.color-secondary { color:$color-secondary !important; }
+
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-center { text-align: center; }
+
+.uppercase { text-transform:uppercase; }
+.nouppercase { text-transform:none !important; }
+
+.cursor { cursor: pointer; }
+
+// Break Br Tags
+.breakBr__tablet-big {
+    @media (max-width: $tablet-big) {
+        br { display: none; }
+    }
+}

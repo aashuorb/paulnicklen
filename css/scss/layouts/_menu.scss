@@ -1,0 +1,174 @@
+.mainMenu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 998;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow-Y: auto;
+    max-width: 30rem;
+    
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    transition: all .25s ease-out;
+    
+    $self: &;
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 5%;
+        right: 0;
+        width: 1px;
+        height: 90%;
+        background: rgba(white, 0.1);
+    }
+
+    .mainNav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-top: auto;
+        padding-top: 20rem;
+
+        li {
+            font-family: $font-family-tertiary;
+            position: relative;
+            z-index: 1;
+            display: block;
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+
+            &:last-child { margin-bottom: 0; }
+
+            a {
+                position: relative;
+                z-index: 1;
+                color: white;
+            }
+
+            &.contact {
+                margin-top: 2rem;
+                a {
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+
+                    i {
+                        margin-bottom: 1.2rem;
+                    }
+                }
+            }
+
+
+            &:hover {
+                a { color: $color-primary; }
+            }
+
+            // Dropdown start
+            .dropdown {
+                padding: 0;
+                background: white;
+                
+                .item {
+                    display: flex;
+                    background: white;
+                    color: $color-grey-dark-3;
+                    padding: 1rem 1rem 1rem 6.5rem;
+                    border-right: 3px solid transparent;
+
+                    &:before { width: 0 }
+
+                    i.icon {
+                        width: 2.6rem;
+                        height: 2.6rem;
+                        margin-right: 1.5rem;
+                    }
+
+                    .content {
+                        width: auto;
+                        flex-grow: 1;
+                        flex-basis: auto;
+                    }
+
+                    &:hover {
+                        background: #f4f9ff;
+                        border-right-color: #2185d0;
+
+                        i.icon {
+                            background-image: image('menu_sprite.png');
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .buyBook {
+        display: flex;
+        margin-top: auto;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 3rem;
+
+        p {
+            font-family: $font-family-secondary;
+            font-size: 1.7rem;
+            line-height: 1.3;
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: rgba(white, 0.4);
+        }
+    }
+
+    &.sticky {
+        opacity: 0;
+        visibility: hidden;
+
+        .buyBook {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+
+    &.showMenu {
+        top: 8.4rem;
+        opacity: 1;
+        visibility: visible;
+        height: calc(100vh - 8.4rem);
+        background: rgba(#07080a, 0.98);
+        
+        .mainNav {
+            padding: 5rem 0;
+            margin-top: 0;
+        }
+        .buyBook {
+            display: none;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @media (max-width: $mobile-big) {
+            top: 7.9rem;
+        }
+    }
+
+    @media (max-width: $tablet-big) {
+        opacity: 0;
+        visibility: hidden;
+        &:after { display: none; }
+
+        .buyBook {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+}
